@@ -11,7 +11,7 @@ namespace MauiApp1
         public string Description { get; set; } = "Описание отсутствует";
         public string Image { get; set; } = "/images/MainTrackPhoto.svg";
         public bool Like { get; set; } = false;
-        public bool Round { get; set; } = false;
+        public bool Round { get; set; } = true;
     }
 
     public sealed class Playlist : List<Track>
