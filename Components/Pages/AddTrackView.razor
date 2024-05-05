@@ -1,0 +1,59 @@
+﻿@using MauiApp1.Areas
+@using System.Text.Json;
+@page "/addtrack"
+
+
+<header class="header main-title-listing">
+    <div><img class="icon-title" src="/images/faqsim.svg" alt="Список треков"> Добавить песню</div>
+</header>
+<div class="main-block-listing">
+    <div class="track-block">
+        <div class="add-track-block">
+            <div class="add-text-track">
+                Обложка трека
+            </div>
+            @* <img class="down-transform-controll" src="/images/addIMGTrack.svg" alt="Добавление фото трека"> *@
+            
+            @* <div class="container-fluid"> *@
+                @* <div class="row px-3"> *@
+                    @* <div class="col-lg-6 offset-lg-3 p-3"> *@
+                        @* <RadzenCard> *@
+            <RadzenFileInput TValue="string" @bind-Value="@_filePath" @bind-FileName="@fileName" @bind-FileSize="@fileSize" 
+                             InputAttributes="@(new Dictionary<string, object>(){ {"aria-label", "select file"}, 
+                            {"style", "background-color: black; border: 2px solid #333; color: white; padding: 8px; border-radius: 5px;"} })" />
+
+
+            @* </RadzenCard> *@
+                    @* </div> *@
+                @* </div> *@
+            @* </div> *@
+            
+            <div class="add-text-track">
+                Название трека
+            </div>
+            <div class="input-wrapper">
+                <input type="text" id="inputNameTrack" placeholder=" ">
+            </div>
+            <div class="add-text-track">
+                Путь к треку
+            </div>
+            <div class="input-wrapper">
+
+                <input type="file" id="inputRoadTrack" placeholder=" ">
+            </div>
+            <div class="button-local">
+                <button class="button-add-track">Добавить трек</button>
+            </div>
+            @* <button class="button-add-track">Добавить песню</button> *@
+        </div>
+        
+    </div>
+</div>
+
+@code {
+    private string _filePath { get; set; }
+    
+    string fileName;
+    long? fileSize;
+}
+

@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Class Name="MauiApp1.Areas.FaqBlock" Collapsed="true">
+    <Position X="7.5" Y="0.5" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Areas\FAQsView.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MauiApp1.Areas.Playlist">
+    <Position X="3" Y="3.5" Width="4.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Areas\ITracksRepository.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MauiApp1.Areas.PlaylistFactory">
+    <Position X="11.25" Y="2.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAIAAAAAAAAAAAAACAAAAAAAAAAAA=</HashCode>
+      <FileName>Areas\ITracksRepository.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MauiApp1.Components.Models.MediaPlayer">
+    <Position X="7.5" Y="1.25" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAgAAAAAIAAAAAAIACAAAIAgAAgAAAoAAEAAAAEAA=</HashCode>
+      <FileName>Components\Models\MediaPlayer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MauiApp1.MainActivity" Collapsed="true">
+    <Position X="11.25" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Platforms\Android\MainActivity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MauiApp1.MainApplication">
+    <Position X="3" Y="2" Width="4.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Platforms\Android\MainApplication.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MauiApp1.App">
+    <Position X="3" Y="0.5" Width="4.25" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MauiApp1.MainPage">
+    <Position X="11.25" Y="4.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MainPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MauiApp1.MauiProgram">
+    <Position X="11.25" Y="1.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MauiProgram.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

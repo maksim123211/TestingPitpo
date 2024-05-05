@@ -1,0 +1,232 @@
+﻿<div class="active-track">
+    @foreach (var song in Playlist)
+    {
+        var i = 0;
+        <div style="margin-top: -14px; padding-bottom: 14px">
+            <RadzenSlider Style="width: 100%" Value="@sliderValue" Change="@(args => sliderValue = args)" TValue="int" />
+        </div>
+        @* <input type="range" min="0" max="100" class="slider-track-active top-space-slayder" @bind="sliderValue" @oninput="InputTrackTime"/>*@
+
+        <div class="mobile-view" style="width: 100%">
+            <div class="main-div-card-active">
+                <div class="box-element-controll-track-active">
+                    <NavLink class="nav-link" href="@($"detailedTrack/{i}")">
+                        <div class="track-card-active">
+                            <div class="card-logo">
+                                <img style="height: 45px" src=@song.Image alt="Лого карточки трека">
+                            </div>
+                            <div class="text-card-track">
+                                <div class="title-track">
+                                    @song.Title
+                                </div>
+                            </div>
+                        </div>
+                    </NavLink>
+
+                    <div class="@containerClassLike like-active-block" @onclick="ClickLikeTrack">
+                        <img class="pressed-image" style="width: 31px; height: 31px;" src="/images/likeTrack.svg" alt="Иконка понравился">
+                        <img class="normal-image" style="width: 30px; height: 30px;" src="/images/notlikeTrack.svg" alt="Иконка нейтрально">
+                    </div>
+
+                    <div class="manage-block-active-track">
+                        @if (isClickedPlay)
+                        {
+                            <a @onclick="ChangeClickedPlay"><img class="slider up-transform-controll" style="width: 38px; height: 38px; margin-top: -4px" src="/images/playButton.svg" alt="Плей"></a>
+                        }
+                        else
+                        {
+                            <a @onclick="ChangeClickedPlay"><img class="slider up-transform-controll" style="width: 38px; height: 38px; margin-top: -4px" src="/images/pauseButton.svg" alt="Пауза"></a>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="desktop-view">
+            <div class="main-div-card-active">
+            <div class="box-element-controll-track-active">
+                <div class="manage-block-active-track">
+                    <a><img class="slider up-transform-controll" src="/images/switchBack.svg" alt="Предыдущий трек"></a>
+                    @if (isClickedPlay)
+                    {
+                        <a @onclick="ChangeClickedPlay"><img class="slider up-transform-controll play-button" src="/images/playButton.svg" alt="Плей"></a>
+                    }
+                    else
+                    {
+                        <a @onclick="ChangeClickedPlay"><img class="slider up-transform-controll play-button" src="/images/pauseButton.svg" alt="Пауза"></a>
+                    }
+                    <a><img class="slider up-transform-controll" src="/images/switchForward.svg" alt="Следующий трек"></a>
+                </div>
+
+                <div class="controll-item-active-card">
+                    <div class="@containerClassRandom" @onclick="ClickRandomTrack">
+                        <img class="pressed-image" style="width: 37px; height: 36px; margin-top: -3px; margin-left: -3px" src="/images/randomTrack.svg" alt="Pressed Image">
+                        <img class="normal-image" style="width: 30px; height: 30px" src="/images/notrandomTrack.svg" alt="Normal Image">
+                    </div>
+
+                    <div class="@containerClassRound" @onclick="ClickRoundTrack">
+                        <img class="pressed-image" style="width: 27px; height: 27px; margin-top: 1px; margin-left: 1px" src="/images/roundTrack.svg" alt="Иконка трека по кругу">
+                        <img class="normal-image" style="width: 35px; height: 35px; margin-top: -3px; margin-left: -3px" src="/images/notroundtrack.svg" alt="Иконка трека по кругу">
+                    </div> 
+                </div>
+                              
+                <NavLink class="nav-link" href="@($"detailedTrack/{i}")">
+                <div class="track-card-active">
+                        <div class="card-logo">
+                            <img style="height: 45px" src=@song.Image alt="Лого карточки трека">
+                        </div>
+                        <div class="text-card-track">
+                            <div class="title-track">
+                                @song.Title
+                            </div>
+                        </div>
+                    </div>
+                </NavLink>
+
+                <div class="@containerClassLike like-active-block" @onclick="ClickLikeTrack">
+                    <img class="pressed-image" style="width: 31px; height: 31px;" src="/images/likeTrack.svg" alt="Иконка понравился">
+                    <img class="normal-image" style="width: 30px; height: 30px;" src="/images/notlikeTrack.svg" alt="Иконка нейтрально">
+                </div>
+            </div>
+            <div style="display: flex; flex-direction: row">
+                <div class="slider-div">
+                    @if (isClickedVolumeMut)
+                    {
+                        <a @onclick="ChangeClickedVolumeMut"><img class="up-transform-controll" style="width: 25px; margin-bottom: -8px" src="/images/volumeout.svg" alt="Значек мута"></a>
+                    }
+                    else
+                    {
+                        <a @onclick="ChangeClickedVolumeMut"><img class="up-transform-controll" style="width: 25px; margin-bottom: -8px" src="/images/volume.svg" alt="Значек громкости"></a>
+                    }
+                    <div style="margin-bottom: -8px; padding-left: 20px">
+                        <RadzenSlider Value="@sliderValueVolume" Change="@(args => sliderValueVolume = args)" TValue="int" />
+                    </div>
+                </div>
+                <img class="up-transform-controll crest-back-active" src="/images/backcrest.svg" alt="Закрыть">
+            </div>
+        </div>
+        </div>
+        
+        i++;
+        break;
+    }
+</div>
+
+@code 
+{
+    [Inject]
+    private Playlist Playlist { get; set; }
+
+    private int sliderValue = 0;
+    private bool isClickedPlay = false;
+
+    private bool isClickedVolumeMut = false;
+    private bool isClickedLike = false;
+    private bool isClickedRandom = false;
+    private bool isClickedRound = false;
+
+    private int sliderValueVolume = 50;
+
+    private bool isPressedRandom = false;
+    private bool doubleClickRandom = false;
+    private string containerClassRandom => isPressedRandom ? "image-container pressed" : "image-container normal";
+
+    private void ClickRandomTrack()
+    {
+        if (doubleClickRandom)
+        {
+            isPressedRandom = false;
+            doubleClickRandom = false;
+        }
+        else
+        {
+            if (isPressedRound)
+            {
+                isPressedRandom = true;
+                doubleClickRandom = true;
+                isPressedRound = false;
+                doubleClickRound = false;
+            }
+            else
+            {
+                isPressedRandom = true;
+                doubleClickRandom = true;
+            }
+        }
+    }
+
+    private bool isPressedRound = false;
+    private bool doubleClickRound = false;
+    private string containerClassRound => isPressedRound ? "image-container pressed" : "image-container normal";
+
+    private void ClickRoundTrack()
+    {
+        if (doubleClickRound)
+        {
+            isPressedRound = false;
+            doubleClickRound = false;
+        }
+        else
+        {
+            if (isPressedRandom)
+            {
+                isPressedRound = true;
+                doubleClickRound = true;
+                isPressedRandom = false;
+                doubleClickRandom = false;
+            }
+            else
+            {
+                isPressedRound = true;
+                doubleClickRound = true;
+            }
+        }
+    }
+
+    private bool isPressedLike = false;
+    private bool doubleClickLike = false;
+    private string containerClassLike => isPressedLike ? "image-container pressed" : "image-container normal";
+
+    private void ClickLikeTrack()
+    {
+        if (doubleClickLike)
+        {
+            isPressedLike = false;
+            doubleClickLike = false;
+        }
+        else
+        {
+            isPressedLike = true;
+            doubleClickLike = true;
+        }
+    }
+
+    private void InputVolume(ChangeEventArgs e)
+    {
+        sliderValueVolume = Convert.ToInt32(e.Value);
+    }
+
+    private void ChangeClickedVolumeMut()
+    {
+        isClickedVolumeMut = !isClickedVolumeMut;
+
+        if (!isClickedVolumeMut)
+        {
+            sliderValueVolume = 50;
+        }
+        else
+        {
+            sliderValueVolume = 0;
+        }
+    }
+
+    private void ChangeClickedPlay()
+    {
+        isClickedPlay = !isClickedPlay;
+    }
+    
+    private void InputTrackTime(ChangeEventArgs e)
+    {
+        sliderValue = Convert.ToInt32(e.Value);
+    }
+}

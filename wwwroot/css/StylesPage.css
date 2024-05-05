@@ -1,0 +1,1093 @@
+﻿html, body {
+    font-family: Inter;
+    background-color: black;
+}
+
+.nav-scrollable {
+    background-color: #111111;
+}
+
+@media only screen and (max-width: 767px) {
+    .mobile-view {
+        display: block;
+    }
+
+    .desktop-view {
+        display: none;
+    }
+
+    .body {
+        overflow-x: hidden;
+    }
+
+    .main-title-listing {
+        font-size: 23px;
+        font-weight: 600;
+        line-height: 33px;
+        letter-spacing: 0.04em;
+        text-align: left;
+        color: white;
+    }
+
+    .header {
+        width: 100%;
+        background-color: black;
+        color: white;
+        padding-top: 10px;
+        padding-left: 20px;
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .main-block-listing {
+        padding: 10px 15px 65px 15px;
+    }
+
+    .button-local {
+        width: 100vw;
+        display: flex;
+        justify-content: center;
+        padding-bottom: 20px;
+    }
+
+    .button-add-track {
+        display: flex;
+        align-content: center;
+        margin-top: 35px;
+        display: inline-block;
+        height: 50px;
+        width: 55vw;
+        padding: 10px 20px;
+        border-radius: 5px;
+        background: linear-gradient(to left, #8e44ad 0%, #9b59b6 60%);
+        color: #fff;
+        font-size: 16px;
+        text-decoration: none;
+        border: none;
+        cursor: pointer;
+        transition: background 0.4s ease;
+        transition: transform 0.3s;
+    }
+
+    .button-add-track:hover {
+        background: linear-gradient(to left, #9b59b6 0%, #8e44ad 100%);
+        transform: scale(0.95);
+    }
+
+    .input-wrapper {
+        position: relative;
+        width: 50vh;
+    }
+
+        .input-wrapper input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+            border-color: #303030;
+            background-color: #303030;
+            color: white;
+        }
+
+            .input-wrapper input[type="text"]:focus {
+                outline: none;
+                border-color: #8e44ad;
+            }
+
+    .add-text-track {
+        font-family: Inter;
+        font-size: 17px;
+        font-weight: 600;
+        line-height: 22.99px;
+        letter-spacing: 0.02em;
+        text-align: left;
+        padding-bottom: 10px;
+        color: #B8B8B8;
+        padding: 20px 0 10px 0;
+    }
+
+    .card-track-form {
+        display: flex;
+        flex-direction: row;
+        border-radius: 10px;
+        padding: 5px;
+        width: 93vw;
+        transition: background-color 0.3s
+    }
+
+    .faqs-card {
+        display: flex;
+        flex-direction: column;
+        color: #B79AE8;
+        margin: 7px 0;
+        background-color: #202020;
+    }
+
+        .card-track-form:hover, faqs-card:hover {
+            background-color: #333;
+        }
+
+    .detailed-description {
+        padding-top: 5px;
+        color: white;
+        opacity: 0;
+        transform: translateY(-150%);
+        animation: ani 1s forwards;
+    }
+
+    @keyframes ani {
+        0% {
+            opacity: 0;
+            transform: translateY(-45%);
+        }
+
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .faqs-card-tab {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .add-text-track {
+        font-family: Inter;
+        font-size: 19px;
+        font-weight: 600;
+        line-height: 22.99px;
+        letter-spacing: 0.02em;
+        text-align: left;
+        padding-bottom: 10px;
+        color: #B8B8B8;
+        padding: 20px 0 10px 0;
+    }
+
+    .custom-select {
+        position: relative;
+        width: 45vw;
+    }
+
+        .custom-select select:focus {
+            outline: none;
+            border-color: #8e44ad;
+        }
+
+
+        .custom-select select {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            color: #B8B8B8;
+            border-color: #303030;
+            background-color: #303030;
+            appearance: none;
+            cursor: pointer;
+        }
+
+        .custom-select::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            pointer-events: none;
+        }
+
+    .select-icon {
+        color: white;
+        position: absolute;
+        top: 50%;
+        right: 10px;
+        transform: translateY(-50%);
+        pointer-events: none;
+    }
+
+        .select-icon img {
+            transition: transform 0.3s;
+        }
+
+    .custom-select:focus-within .select-icon img {
+        transform: translateY(-50%) rotate(180deg);
+    }
+
+    .settings-text {
+        color: white;
+    }
+
+    .settings-gesture {
+        padding: 16px 0;
+        width: 90vw;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .gesture-name {
+        display: flex;
+        align-items: center;
+        font-family: Inter;
+        font-size: 15px;
+        font-weight: 500;
+        line-height: 19.36px;
+        letter-spacing: 0.02em;
+        text-align: left;
+        color: #B8B8B8;
+    }
+
+    .card-track-form-mobile {
+        display: flex;
+        flex-direction: row;
+        border-radius: 10px;
+        background-color: #202020;
+        margin-left: -15px;
+        padding-top: 6px;
+        padding-bottom: 6px;
+        width: 93vw;
+        transition: background-color 0.3s
+    }
+
+    .card-logo {
+        padding: 0 10px 0 0;
+    }
+
+    .text-card-track {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .title-track {
+        font-size: 20px;
+        font-weight: 700;
+        line-height: 24.52px;
+        letter-spacing: 0.06em;
+        text-align: left;
+        color: white;
+        padding: 3px 0;
+    }
+
+    .description-track {
+        font-size: 15px;
+        font-weight: 700;
+        line-height: 18.39px;
+        letter-spacing: 0.055em;
+        text-align: left;
+        color: #8A9A9D;
+        padding: 3px 0;
+    }
+
+    .main-track {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100vw;
+    }
+
+    .track-title {
+        font-size: 20px;
+        font-weight: 600;
+        line-height: 24.2px;
+        letter-spacing: 0.04em;
+        text-align: left;
+        color: white;
+        padding: 25px 0 5px 0;
+    }
+
+    .track-description {
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 14.52px;
+        letter-spacing: 0.06em;
+        text-align: left;
+        color: #F1F1F1;
+    }
+
+    .manage-block {
+        margin-top: 10px;
+        padding: 0 50px;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        /*Временно*/
+        padding-bottom: 100px
+    }
+
+    .play-button {
+        margin-top: -10px;
+    }
+
+    .block-track-controll {
+        width: 80%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        position: fixed;
+        bottom: 30px
+    }
+
+    .image-container {
+        position: relative;
+        width: 40px;
+        height: 40px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        left: 7px;
+    }
+
+    /* Стили для обычного изображения */
+    .normal-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    /* Стили для изображения при нажатии */
+    .pressed-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: none; /* Изначально скрываем изображение при нажатии */
+    }
+
+    /* Показываем изображение при нажатии */
+    .image-container.pressed .pressed-image {
+        display: block;
+    }
+
+    /* Скрываем обычное изображение при нажатии */
+    .image-container.pressed .normal-image {
+        display: none;
+    }
+
+    .mobile-slider-div {
+        width: 80%;
+        position: fixed;
+        bottom: 10px
+    }
+
+    .slider-div {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        margin-top: -3px;
+    }
+
+    .main-div-card-active {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 0 10px;
+        width: 100vw
+    }
+
+    .manage-block-active-track {
+        padding: 15px 0 0 5px;
+    }
+
+    .track-card-active {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: row;
+        bottom: 15px
+    }
+
+    .active-track {
+        width: 100vw;
+        background-color: #333;
+        border-radius: 6px;
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        height: 62px;
+    }
+
+    .box-element-controll-track-active {
+        margin-top: -22px;
+        margin-left: -10px;
+        display: flex;
+        flex-direction: row;
+        width: 100vw
+    }
+
+    .like-active-block {
+        display: flex;
+        align-content: center;
+        justify-content: center;
+        align-items: center;
+        top: 15px;
+        margin-left: 75px
+    }
+
+    .not-like-track {
+        padding: 10px;
+        font-size: 26px;
+        font-weight: 600;
+        line-height: 33px;
+        letter-spacing: 0.04em;
+        text-align: left;
+        color: white;
+    }
+}
+
+/* Стили для десктопных устройств */
+@media only screen and (min-width: 768px) {
+    .mobile-view {
+        display: none;
+    }
+
+    .desktop-view {
+        display: block;
+    }
+
+    .main-page {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        height: 100%;
+    }
+
+    .logo-container {
+        width: 100%;
+        padding: 30px 20px;
+    }
+
+    .menu-container {
+        padding: 20px 0 20px 0;
+    }
+
+    .menu-help-container {
+        padding: 35px 0 20px 0;
+    }
+
+    .menu-help {
+        font-size: 19px;
+        font-weight: 600;
+        line-height: 22.99px;
+        letter-spacing: 0.02em;
+        text-align: left;
+        color: #B8B8B8;
+    }
+
+    .icon-nav-elements {
+        padding: 0 10px 0 0;
+    }
+
+    .main-block-listing {
+        padding: 50px 80px 0 80px;
+    }
+
+    .not-like-track {
+        padding: 30px;
+        font-size: 26px;
+        font-weight: 600;
+        line-height: 33px;
+        letter-spacing: 0.04em;
+        text-align: left;
+        color: white;
+    }
+
+    .main-title-listing {
+        font-size: 26px;
+        font-weight: 600;
+        line-height: 33px;
+        letter-spacing: 0.04em;
+        text-align: left;
+        color: white;
+    }
+
+    .icon-title {
+        padding: 0 15px 0 0;
+    }
+
+    .track-block {
+        padding: 65px 0 55px 0;
+        margin-left: -30px;
+    }
+
+    .add-track-block {
+        padding-left: 30px;
+    }
+
+    .add-text-track {
+        font-family: Inter;
+        font-size: 19px;
+        font-weight: 600;
+        line-height: 22.99px;
+        letter-spacing: 0.02em;
+        text-align: left;
+        padding-bottom: 10px;
+        color: #B8B8B8;
+        padding: 20px 0 10px 0;
+    }
+
+    .settings-text {
+        color: white;
+    }
+
+    .card-track-form {
+        display: flex;
+        flex-direction: row;
+        border-radius: 10px;
+        padding: 15px;
+        width: 65vw;
+        transition: background-color 0.3s
+    }
+
+    .faqs-card {
+        display: flex;
+        flex-direction: column;
+        color: #B79AE8;
+        margin: 7px 0;
+        background-color: #202020;
+    }
+
+    .card-faqs {
+        padding-left: 25px;
+    }
+
+    .detailed-description {
+        padding-top: 5px;
+        color: white;
+        opacity: 0;
+        transform: translateY(-150%);
+        animation: ani 1s forwards;
+    }
+
+    @keyframes ani {
+        0% {
+            opacity: 0;
+            transform: translateY(-45%);
+        }
+
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+
+    .container {
+        position: relative;
+    }
+
+    .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5); /* semi-transparent overlay */
+        opacity: 0; /* initially hidden */
+        transition: opacity 0.3s ease; /* smooth transition */
+        z-index: 1;
+    }
+
+    .show-overlay {
+        opacity: 1; /* reveal overlay */
+    }
+
+    .content {
+        position: relative;
+        z-index: 2; /* place content above overlay */
+        /* Other styles for your content */
+    }
+
+    .faqs-card-tab {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .card-track-form:hover, faqs-card:hover {
+        background-color: #333;
+    }
+
+    .title-track {
+        font-size: 20px;
+        font-weight: 700;
+        line-height: 24.52px;
+        letter-spacing: 0.06em;
+        text-align: left;
+        color: white;
+        padding: 3px 0;
+    }
+
+    .description-track {
+        font-size: 15px;
+        font-weight: 700;
+        line-height: 18.39px;
+        letter-spacing: 0.055em;
+        text-align: left;
+        color: #8A9A9D;
+        padding: 3px 0;
+    }
+
+    .text-card-track {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .card-logo {
+        padding: 0 20px 0 0;
+    }
+
+    .header {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background-color: black;
+        color: white;
+        padding: 55px 320px 20px 80px;
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .slider-photo-track {
+        display: flex;
+        flex-direction: row;
+        padding: 10px 0 50px 0;
+        max-width: 100%
+    }
+
+    .slider-div {
+        display: flex;
+        flex-direction: row;
+        margin-top: -3px;
+    }
+
+    .slider-value {
+        color: white;
+    }
+
+    .forward-track {
+        padding-bottom: 0px;
+        filter: blur(3px);
+        width: 100%;
+    }
+
+    .next-track-div {
+        padding: 35px 15px 0 15px;
+        min-width: 300px;
+    }
+
+    .track-controll-element {
+        min-width: 100%;
+        display: flex;
+        justify-content: center;
+        justify-items: center;
+        align-content: center;
+        flex-direction: column;
+        padding: 0 150px;
+        margin-top: -50px
+    }
+
+    .main-track {
+        min-width: 400px;
+    }
+
+    .main-page-track {
+        display: grid;
+        place-items: center;
+        height: 100vh;
+        width: 80vw;
+        flex-direction: column;
+    }
+
+    .up-transform-controll {
+        transition: transform 0.3s;
+    }
+
+        .up-transform-controll:hover {
+            transform: scale(1.2);
+        }
+
+    .down-transform-controll {
+        transition: transform 0.3s;
+    }
+
+        .down-transform-controll:hover {
+            transform: scale(0.95);
+        }
+
+    .track-title {
+        font-size: 20px;
+        font-weight: 600;
+        line-height: 24.2px;
+        letter-spacing: 0.04em;
+        text-align: left;
+        color: white;
+        padding: 25px 0 5px 0;
+    }
+
+    .track-description {
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 14.52px;
+        letter-spacing: 0.06em;
+        text-align: left;
+        color: #F1F1F1;
+    }
+
+    .slider {
+        max-width: 75%;
+        min-width: 38%;
+    }
+
+    .manage-block-active-track {
+        width: 200px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 15px 15px 0 5px;
+    }
+
+    .play-button {
+        margin-top: -5px;
+    }
+
+    .manage-block {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 0 120px;
+    }
+
+    .manage-block-detailed {
+        display: flex;
+        flex-direction: row;
+        width: 33%;
+        justify-content: space-between;
+        padding-bottom: 20px;
+    }
+
+    .block-track-controll {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 8px 100px 0 120px;
+    }
+
+    .button-add-track {
+        display: flex;
+        align-content: center;
+        margin-top: 35px;
+        display: inline-block;
+        height: 50px;
+        width: 23vw;
+        padding: 10px 20px;
+        border-radius: 5px;
+        background: linear-gradient(to left, #8e44ad 0%, #9b59b6 60%);
+        color: #fff;
+        font-size: 16px;
+        text-decoration: none;
+        border: none;
+        cursor: pointer;
+        transition: background 0.4s ease;
+        transition: transform 0.3s;
+    }
+
+    .button-add-track:hover {
+        background: linear-gradient(to left, #9b59b6 0%, #8e44ad 100%);
+        transform: scale(0.95);
+    }
+
+    .input-wrapper {
+        position: relative;
+        width: 450px;
+    }
+
+    .input-wrapper input[type="text"] {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+        transition: border-color 0.3s ease;
+        border-color: #303030;
+        background-color: #303030;
+        color: white;
+    }
+
+    .input-wrapper input[type="text"]:focus {
+        outline: none;
+        border-color: #8e44ad;
+    }
+
+
+    .custom-select {
+        position: relative;
+        width: 300px;
+    }
+
+
+        .custom-select select:focus {
+            outline: none;
+            border-color: #8e44ad;
+        }
+
+
+        .custom-select select {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            color: #B8B8B8;
+            border-color: #303030;
+            background-color: #303030;
+            appearance: none;
+            cursor: pointer;
+        }
+
+        .custom-select::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            pointer-events: none;
+        }
+
+    .select-icon {
+        color: white;
+        position: absolute;
+        top: 50%;
+        right: 10px;
+        transform: translateY(-50%);
+        pointer-events: none;
+    }
+
+        .select-icon img {
+            transition: transform 0.3s;
+        }
+
+    .custom-select:focus-within .select-icon img {
+        transform: translateY(-50%) rotate(180deg);
+    }
+
+    .settings-gesture {
+        padding: 16px 0;
+        width: 40vw;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .gesture-name {
+        display: flex;
+        align-items: center;
+        font-family: Inter;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 19.36px;
+        letter-spacing: 0.02em;
+        text-align: left;
+        color: #B8B8B8;
+    }
+
+    .button-local {
+        width: 66vw;
+        display: flex;
+        justify-content: center
+    }
+
+    .active-track {
+        width: 100%;
+        background-color: #333;
+        border-radius: 6px;
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        height: 62px;
+    }
+
+    .top-space-slayder-time-track {
+        margin-top: 12px;
+    }
+
+    .top-space-slayder {
+        top: -14px;
+        margin-bottom: -10px;
+    }
+
+    .top-space-slayder-volume {
+        margin-left: 10px;
+        bottom: -15px;
+    }
+
+    .slider-track-active {
+        -webkit-appearance: none;
+        width: 100%;
+        height: 4px; /* Толщина ползунка */
+        background: #d3d3d3; /* Цвет трека */
+        outline: none;
+        opacity: 0.7;
+        transition: opacity .2s;
+        position: relative;
+    }
+
+        /* Стили для заполненной части слайдера */
+        .slider-track-active::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 4px; /* Толщина ползунка */
+            background: linear-gradient(to right, mediumpurple 0%, mediumpurple 30%, #d3d3d3 30%, #d3d3d3 100%); /* Градиентный фон, где половина до ползунка зеленая */
+        }
+
+        /* Стили для ползунка */
+        .slider-track-active::-webkit-slider-thumb {
+            bottom: 3px;
+            -webkit-appearance: none;
+            appearance: none;
+            width: 10px; /* Ширина ползунка */
+            height: 10px; /* Высота ползунка */
+            background-color: mediumpurple; /* Цвет ползунка */
+            cursor: pointer;
+            border-radius: 50%;
+            position: relative;
+            z-index: 1;
+        }
+
+    .image-container {
+        margin: 0 0 0 10px;
+        padding: 0 30px;
+        position: relative;
+        width: 40px;
+        height: 40px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center
+    }
+
+    /* Стили для обычного изображения */
+    .normal-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    /* Стили для изображения при нажатии */
+    .pressed-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: none; /* Изначально скрываем изображение при нажатии */
+    }
+
+    /* Показываем изображение при нажатии */
+    .image-container.pressed .pressed-image {
+        display: block;
+    }
+
+    /* Скрываем обычное изображение при нажатии */
+    .image-container.pressed .normal-image {
+        display: none;
+    }
+
+    .like-active-block {
+        display: flex;
+        align-content: center;
+        justify-content: center;
+        top: 15px
+    }
+
+    .track-card-active {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: row;
+        bottom: 15px
+    }
+
+    .controll-item-active-card {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin-top: 10px;
+        margin-left: 16px
+    }
+
+    .box-element-controll-track-active {
+        margin-top: -22px;
+        display: flex;
+        flex-direction: row
+    }
+
+    .main-div-card-active {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 0 25px
+    }
+
+    .crest-back-active {
+        margin-top: -5px;
+        margin-right: -10px;
+        margin-left: 20px;
+        width: 11px;
+        height: 11px;
+    }
+
+    .RadzenSlider .rz-handle {
+        background-color: #007bff; /* Измените на нужный вам цвет */
+    }
+
+    /* Изменение цвета фона трека (полосы) */
+    .RadzenSlider .rz-track {
+        background-color: #f0f0f0; /* Измените на нужный вам цвет */
+    }
+
+    /* Изменение цвета фона дорожки перед ползунком */
+    .RadzenSlider .rz-selection {
+        !important;
+        background-color: #967de3; /* Измените на нужный вам цвет */
+    }
+
+    /* Изменение цвета текста значений на ползунке */
+    .RadzenSlider .rz-tooltip {
+        color: #fff; /* Измените на нужный вам цвет */
+    }
+
+    /* Изменение размера текста значений на ползунке */
+    .RadzenSlider .rz-tooltip {
+        font-size: 14px; /* Измените на нужный вам размер */
+    }
+}
+
+
+
+@media (max-width: 768px) {
+    .col {
+        flex: 1 0 100%;
+    }
+}

@@ -1,0 +1,81 @@
+﻿<div class="mobile-view">
+    <div class="top-row ps-3 navbar navbar-dark" style="background-color: #111111;">
+        <div class="container-fluid">
+            <a class="navbar-brand" style="margin-top: -5px" href=""><img src="/images/logoMain.svg" alt="Главное лого"></a>
+        </div>
+    </div>
+</div>
+
+<input type="checkbox" title="Navigation menu" class="navbar-toggler" />
+
+<div class="nav-scrollable" onclick="document.querySelector('.navbar-toggler').click()">
+    <div class="desktop-view">
+        <div class="px-3">
+            <div class="logo-container">
+                <a class="navbar-brand" href=""><img src="/images/logoMain.svg" alt="Главное лого"></a>
+            </div>
+
+            <div class="menu-container">
+                <div class="menu-help">
+                    Menu
+                </div>
+                <img src="/images/Vector.svg" alt="Вектор">
+            </div>
+            <div class="nav-item">
+                <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
+                    <img class="icon-nav-elements" src="/images/buttonplaylist.svg" alt="Иконка плейлист"> Плейлист
+                </NavLink>
+            </div>
+            <div class="nav-item">
+                <NavLink class="nav-link" href="likeTrack">
+                    <img class="icon-nav-elements" src="/images/iconlove.svg" alt="Иконка любимые"> Любимые
+                </NavLink>
+            </div>
+
+            <div class="menu-help-container">
+                <div class="menu-help">
+                    Help
+                </div>
+                <img src="/images/Vector.svg" alt="Вектор">
+            </div>
+
+            <div class="nav-item">
+                <NavLink class="nav-link" href="settings">
+                    <img class="icon-nav-elements" src="/images/iconsettings.svg" alt="Иконка найтройки"> Настройки
+                </NavLink>
+            </div>
+            <div class="nav-item">
+                <NavLink class="nav-link" href="faqs">
+                    <img class="icon-nav-elements" src="/images/iconFAQs.svg" alt="Иконка помощь"> FAQs
+                </NavLink>
+            </div>
+        </div>
+    </div>
+        
+    <div class="mobile-view">
+        <nav class="flex-column">
+            <div class="nav-item px-3">
+                <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
+                    <img class="icon-nav-elements" style="padding-right: 10px" src="/images/buttonplaylist.svg" alt="Иконка плейлист"> Плейлист
+                </NavLink>
+            </div>
+            <div class="nav-item px-3">
+                <NavLink class="nav-link" href="likeTrack">
+                    <img class="icon-nav-elements" style="padding-right: 10px" src="/images/iconlove.svg" alt="Иконка любимые"> Любимые
+                </NavLink>
+            </div>
+            <div class="nav-item px-3">
+                <NavLink class="nav-link" href="settings">
+                    <img class="icon-nav-elements" style="padding-right: 10px" src="/images/iconsettings.svg" alt="Иконка найтройки"> Настройки
+                </NavLink>
+            </div>
+            <div class="nav-item px-3">
+                <NavLink class="nav-link" href="faqs">
+                    <img class="icon-nav-elements" style="padding-right: 10px" src="/images/iconFAQs.svg" alt="Иконка помощь"> FAQs
+                </NavLink>
+            </div>
+        </nav>
+    </div>
+
+</div>
+

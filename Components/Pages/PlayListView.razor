@@ -1,0 +1,43 @@
+﻿@using MauiApp1.Areas
+@using System.Text.Json;
+@page "/"
+
+
+<header class="header main-title-listing">
+    <div><img class="icon-title" src="/images/playList.svg" alt="Список треков"> Список Треков</div>
+    <NavLink class="nav-link" href="addTrack">
+        <img class="up-transform-controll" src="/images/addTrack.svg" alt="Добавить трек">
+    </NavLink>
+</header>
+<div class="main-block-listing">
+            
+    <div class="track-block">
+
+    @for(int i = 0; i < Playlist.Count; i++)
+    {
+        var song = Playlist[i];
+        <NavLink class="nav-link" href="@($"detailedTrack/{i}")">
+                <div class="card-track-form card-track-form-mobile">
+                <div class="card-logo">
+                    <img src=@song.Image alt="Лого карточки трека">
+                </div>
+                <div class="text-card-track">
+                    <div class="title-track">
+                        @song.Title
+                    </div>
+                    <div class="description-track">
+                        @song.Description
+                    </div>
+                </div>
+            </div>
+        </NavLink>
+        }
+    </div>
+</div>
+
+@* <ActiveTrackViewComponent /> *@
+
+@code {
+    [Inject]
+    private Playlist Playlist { get; set; }
+}

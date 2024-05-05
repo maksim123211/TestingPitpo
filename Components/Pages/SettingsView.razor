@@ -1,0 +1,54 @@
+﻿@page "/settings"
+
+<header class="header main-title-listing">
+    <div>
+        <img class="icon-title" src="/images/faqsim.svg" alt="Settings"> Настройки
+    </div>
+</header>
+
+<div class="main-block-listing">
+
+    <div class="track-block">
+        <div class="add-track-block">
+            <div class="add-text-track settings-text">
+                Жесты управления
+            </div>
+            @foreach (var itemGestureCard in gestureElements)
+            {
+                <div class="settings-gesture">
+                    <div class="gesture-name">@itemGestureCard</div>
+                    <div class="custom-select">
+                        <select id="mySelect">
+                            <option value="1">Отсутствует</option>
+                            <option value="2">Взмах правой рукой</option>
+                            <option value="3">Показ ладони</option>
+                            <option value="4">Показ двух пальцев на руке</option>
+                            <option value="5">Взмах двумя руками</option>
+                            <option value="6">Вытянуть руку в бок</option>
+                        </select>
+                        <div class="select-icon">
+                            <img src="/images/dragonfly.svg" alt="Dragonfly">
+                        </div>
+                    </div>
+                </div>
+            }
+            <div class="button-local">
+                <button class="button-add-track">Сохранить</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+@code {
+    List<string> gestureElements = new List<string>()
+    {
+        "Плей/Пайза",
+        "Следующий трек",
+        "Предыдущий трек",
+        "Прибавить громкость",
+        "Убавить громкость",
+    };
+}

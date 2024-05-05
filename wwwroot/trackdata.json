@@ -1,0 +1,37 @@
+[
+  {
+    "Id": 1,
+    "Title": "Anything Goes",
+    "Description": "Updated Aug 31 • Emma Chamberlain",
+    "Image": "/images/cardlogo.svg",
+    "Like": false
+  },
+  {
+    "Id": 2,
+    "Title": "Ask Me Another",
+    "Description": "Updated Aug 18 • NPR Studios",
+    "Image": "/images/cardlogo2.svg",
+    "Like": false
+  },
+  {
+    "Id": 3,
+    "Title": "Baking a Mystery",
+    "Description": "Updated Aug 21• Stephanie Soo",
+    "Image": "/images/cardlogo3.svg",
+    "Like": true
+  },
+  {
+    "Id": 4,
+    "Title": "Extra Dynamic",
+    "Description": "Updated Aug 10 • ur mom ashley",
+    "Image": "/images/cardlogo4.svg",
+    "Like": false
+  },
+  {
+    "Id": 5,
+    "Title": "Teenager Therapy",
+    "Description": "Updated Aug 21• iHeart Studios",
+    "Image": "/images/cardlogo5.svg",
+    "Like": false
+  }
+]

@@ -1,0 +1,39 @@
+﻿<NavLink @onclick="ChangeCardState">
+    <div class="card-track-form faqs-card" style="z-index: 9990; position: relative;">
+        <div class="faqs-card-tab">
+            <div>@Article.Question</div>
+
+            @if (!_isActive)
+            {
+                <img class="icon-title" src="/images/Action.svg" alt="Открыть описание">
+            }
+
+            else
+            {
+                <img class="icon-title" src="/images/Diaction.svg" alt="Закрыть описание">
+            }
+        </div>
+
+        
+    </div>
+    @if (_isActive)
+    {
+        <div class="card-track-form faqs-card detailed-description" style="margin-top: -22px; z-index: 1000">
+            <div class="detailed-description" style="z-index: 9999; position: relative;">@Article.Answer</div>
+        </div>
+        
+    }
+</NavLink>
+
+@code {
+    [EditorRequired]
+    [Parameter]
+    public required FaqArticle Article { get; set; }
+
+    private bool _isActive;
+
+    private void ChangeCardState()
+    {
+        _isActive = !_isActive;
+    }
+}

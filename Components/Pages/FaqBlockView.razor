@@ -1,0 +1,15 @@
+﻿<div class="main-block-listing">
+    <div class="track-block">
+        @foreach (var article in Block)
+        {
+            <FaqArticleView article="@article"/>
+        }
+    </div>
+</div>
+
+@code 
+{
+    [EditorRequired]
+    [Parameter]
+    public required FaqBlock Block { get; set; }
+}

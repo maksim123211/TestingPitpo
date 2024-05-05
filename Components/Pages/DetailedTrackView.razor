@@ -1,0 +1,349 @@
+﻿@using MauiApp1.Areas
+@using System.Text.Json;
+@page "/detailedTrack/{CurrentTrackId:int}"
+
+<div class="main-page-track">
+    @* <div class="slider-div">
+        <img style="width: 8%" src="/images/volume.svg" alt="Значек громкости">
+        <input type="range" min="0" max="100" @bind="sliderValueVolume" @oninput="InputVolume" class="slider-input" />
+    </div> *@
+    <div class="slider-photo-track desktop-view">
+        <div class="next-track-div">
+            @if (_previewTrack != null)
+            {
+                <NavLink @onclick="SwitchToPreviewTrack">
+                    <div class="forward-track down-transform-controll">
+                        <img style="width: 100%" src="@_previewTrack.Image" alt="Лого детальной страницы трека">
+                        <div class="track-title">@_previewTrack.Title</div>
+                        <div class="track-description">@_previewTrack.Description</div>
+                    </div>
+                </NavLink>
+            }
+        </div>
+        <div class="main-track">
+            <img style="width: 100%" src=@_currentTrack.Image alt="Лого детальной страницы трека">
+            <div class="track-title">@_currentTrack.Title</div>
+            <div class="track-description">@_currentTrack.Description</div>
+        </div>
+        <div class="next-track-div">
+            @if (_nextTrack != null)
+            {
+                <NavLink @onclick="SwitchToNextTrack">
+                    <div class="forward-track down-transform-controll">
+                        <img style="width: 100%" src="@_nextTrack.Image" alt="Лого детальной страницы трека">
+                        <div class="track-title">@_nextTrack.Title</div>
+                        <div class="track-description">@_nextTrack.Description</div>
+                    </div>
+                </NavLink>
+            }
+        </div>
+    </div>
+    <div class="main-track mobile-view">
+        <div style="display: flex; align-items: center; justify-content: center; width: 100%; padding-top: 30px">
+            <img style="width: 80%" src=@_currentTrack.Image alt="Лого детальной страницы трека">
+        </div>
+        <div style="width: 80%">
+            <div class="track-title">@_currentTrack.Title</div>
+            <div class="track-description">@_currentTrack.Description</div>
+            <div class="track-controll-element">
+                <div style="width: 100%">
+                    <RadzenSlider Style="width: 100%; margin-top: 30px" Value="@sliderValue" Change="@(args => sliderValue = args)" TValue="int" />
+                </div>
+                <div class="slider-value">@sliderValue</div>
+                <div class="manage-block">
+                    <a><img class="slider up-transform-controll" @onclick="SwitchToPreviewTrack" src="/images/switchBack.svg" alt="Предыдущий трек"></a>
+                    @if (isClickedPlay)
+                    {
+                        <a @onclick="ChangeClickedPlay"><img class="slider up-transform-controll play-button" src="/images/playButton.svg" alt="Плей"></a>
+                    }
+                    else
+                    {
+                        <a @onclick="ChangeClickedPlay"><img class="slider up-transform-controll play-button" src="/images/pauseButton.svg" alt="Пауза"></a>
+                    }
+                    <a><img class="slider up-transform-controll" @onclick="SwitchToNextTrack" src="/images/switchForward.svg" alt="Следующий трек"></a>
+                </div>
+                
+                @* <input type="range" min="0" max="100" @bind="sliderValue" @oninput="InputTrackTime" class="slider-track-active top-space-slayder-time-track" /> *@
+                
+        
+                <div class="block-track-controll">
+
+                    <div class="@containerClassRandom" @onclick="ClickRandomTrack">
+                        <img class="pressed-image" style="width: 37px; height: 36px; margin-top: -3px; margin-left: -3px" src="/images/randomTrack.svg" alt="Pressed Image">
+                        <img class="normal-image" style="width: 30px; height: 30px" src="/images/notrandomTrack.svg" alt="Normal Image">
+                    </div>
+
+                    <div class="@containerClassRound" @onclick="ClickRoundTrack">
+                        <img class="pressed-image" style="width: 27px; height: 27px; margin-top: 1px; margin-left: 1px" src="/images/roundTrack.svg" alt="Иконка трека по кругу">
+                        <img class="normal-image" style="width: 35px; height: 35px; margin-top: -3px; margin-left: -3px" src="/images/notroundtrack.svg" alt="Иконка трека по кругу">
+                    </div>
+
+                    <div class="@containerClassLike" @onclick="ClickLikeTrack">
+                        <img class="pressed-image" style="width: 31px; height: 31px;" src="/images/likeTrack.svg" alt="Иконка понравился">
+                        <img class="normal-image" style="width: 30px; height: 30px;" src="/images/notlikeTrack.svg" alt="Иконка нейтрально">
+                    </div>
+
+                    
+                </div>
+                <div class="slider-div mobile-slider-div">
+                    @if (isClickedVolumeMut)
+                    {
+                        <a @onclick="ChangeClickedVolumeMut"><img class="up-transform-controll" style="width: 25px; margin-bottom: -8px" src="/images/volumeout.svg" alt="Значек мута"></a>
+                    }
+                    else
+                    {
+                        <a @onclick="ChangeClickedVolumeMut"><img class="up-transform-controll" style="width: 25px; margin-bottom: -8px" src="/images/volume.svg" alt="Значек громкости"></a>
+                    }
+                    <div style="margin-bottom: -8px; padding-left: 20px">
+                        <RadzenSlider Value="@sliderValueVolume" Change="@(args => sliderValueVolume = args)" TValue="int" />
+                    </div>
+
+                    @* <input type="range" min="0" max="100" @bind="sliderValueVolume" @oninput="InputVolume" class="slider-track-active top-space-slayder-volume" /> *@
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <div class="track-controll-element desktop-view">
+        <div class="manage-block">
+            <div class="manage-block-detailed">
+                <a><img class="slider up-transform-controll desktop-view" @onclick="TrackTimeMinus" src="/images/rewindBack.svg" alt="Перемотать назад"></a>
+                <a><img class="slider up-transform-controll" @onclick="SwitchToPreviewTrack" src="/images/switchBack.svg" alt="Предыдущий трек"></a>
+            </div>
+            @if (isClickedPlay)
+            {
+                <a @onclick="ChangeClickedPlay"><img class="slider up-transform-controll play-button" src="/images/playButton.svg" alt="Плей"></a>
+            }
+            else
+            {
+                <a @onclick="ChangeClickedPlay"><img class="slider up-transform-controll play-button" src="/images/pauseButton.svg" alt="Пауза"></a>
+            }
+            <div class="manage-block-detailed">
+                <a><img class="slider up-transform-controll" @onclick="SwitchToNextTrack" src="/images/switchForward.svg" alt="Следующий трек"></a>
+                <a><img class="slider up-transform-controll desktop-view" @onclick="TrackTimePlus" src="/images/rewindForward.svg" alt="Перемотать вперёд"></a>
+            </div>
+        </div>
+
+        <div style="width: 100%">
+            <RadzenSlider Style="width: 100%" Value="@sliderValue" Change="@(args => sliderValue = args)" TValue="int" />
+        </div>
+        @* <input type="range" min="0" max="100" @bind="sliderValue" @oninput="InputTrackTime" class="slider-track-active top-space-slayder-time-track" /> *@
+        <div class="slider-value">@sliderValue</div>
+        
+        <div class="block-track-controll">
+
+            <div class="@containerClassRandom" @onclick="ClickRandomTrack">
+                <img class="pressed-image" style="width: 37px; height: 36px; margin-top: -3px; margin-left: -3px" src="/images/randomTrack.svg" alt="Pressed Image">
+                <img class="normal-image" style="width: 30px; height: 30px" src="/images/notrandomTrack.svg" alt="Normal Image">
+            </div>
+
+            <div class="@containerClassRound" @onclick="ClickRoundTrack">
+                <img class="pressed-image" style="width: 27px; height: 27px; margin-top: 1px; margin-left: 1px" src="/images/roundTrack.svg" alt="Иконка трека по кругу">
+                <img class="normal-image" style="width: 35px; height: 35px; margin-top: -3px; margin-left: -3px" src="/images/notroundtrack.svg" alt="Иконка трека по кругу">
+            </div>
+
+            <div class="@containerClassLike" @onclick="ClickLikeTrack">
+                <img class="pressed-image" style="width: 31px; height: 31px;" src="/images/likeTrack.svg" alt="Иконка понравился">
+                <img class="normal-image" style="width: 30px; height: 30px;" src="/images/notlikeTrack.svg" alt="Иконка нейтрально">
+            </div>
+
+            <div class="slider-div">
+                @if (isClickedVolumeMut)
+                {
+                    <a @onclick="ChangeClickedVolumeMut"><img class="up-transform-controll" style="width: 25px; margin-bottom: -8px" src="/images/volumeout.svg" alt="Значек мута"></a>
+                }
+                else
+                {
+                    <a @onclick="ChangeClickedVolumeMut"><img class="up-transform-controll" style="width: 25px; margin-bottom: -8px" src="/images/volume.svg" alt="Значек громкости"></a>
+                }
+                <div style="margin-bottom: -8px; padding-left: 20px">
+                    <RadzenSlider Value="@sliderValueVolume" Change="@(args => sliderValueVolume = args)" TValue="int" />
+                </div>
+                
+                @* <input type="range" min="0" max="100" @bind="sliderValueVolume" @oninput="InputVolume" class="slider-track-active top-space-slayder-volume" /> *@
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public int CurrentTrackId { get; set; }
+
+    [Inject]
+    private NavigationManager NavigationManager { get; set; }
+
+    [Inject]
+    private Playlist Playlist { get; set; }
+
+    int value = 55;
+
+    private Track _currentTrack;
+    private Track? _nextTrack;
+    private Track? _previewTrack;
+
+    private bool isClickedPlay = false;
+    private bool isClickedVolumeMut = false;
+
+    private int sliderValueVolume = 50;
+    private int sliderValue = 0;
+
+    private bool isPressedRandom = false;
+    private bool doubleClickRandom = false;
+    private string containerClassRandom => isPressedRandom ? "image-container pressed" : "image-container normal";
+
+    private void ClickRandomTrack()
+    {
+        if (doubleClickRandom)
+        {
+            isPressedRandom = false;
+            doubleClickRandom = false;
+        }
+        else
+        {
+            if (isPressedRound)
+            {
+                isPressedRandom = true;
+                doubleClickRandom = true;
+                isPressedRound = false;
+                doubleClickRound = false;
+            }
+            else
+            {
+                isPressedRandom = true;
+                doubleClickRandom = true;
+            }
+        }
+    }
+
+    private bool isPressedRound = false;
+    private bool doubleClickRound = false;
+    private string containerClassRound => isPressedRound ? "image-container pressed" : "image-container normal";
+
+    private void ClickRoundTrack()
+    {
+        if (doubleClickRound)
+        {
+            isPressedRound = false;
+            doubleClickRound = false;
+        }
+        else
+        {
+            if (isPressedRandom)
+            {
+                isPressedRound = true;
+                doubleClickRound = true;
+                isPressedRandom = false;
+                doubleClickRandom = false;
+            }
+            else
+            {
+                isPressedRound = true;
+                doubleClickRound = true;
+            }
+        }
+    }
+
+    private bool isPressedLike = false;
+    private bool doubleClickLike = false;
+    private string containerClassLike => isPressedLike ? "image-container pressed" : "image-container normal";
+
+    private void ClickLikeTrack()
+    {
+        if (doubleClickLike)
+        {
+            isPressedLike = false;
+            doubleClickLike = false;
+        }
+        else
+        {
+            isPressedLike = true;
+            doubleClickLike = true;
+        }
+    }
+
+    private void TrackTimePlus()
+    {
+        sliderValue += 3;
+    }
+
+    private void TrackTimeMinus()
+    {
+        sliderValue = sliderValue - 3 <= 0 ? 0 : sliderValue - 3;
+    }
+
+    private void InputVolume(ChangeEventArgs e)
+    {
+        sliderValueVolume = Convert.ToInt32(e.Value);
+    }
+
+    private void InputTrackTime(ChangeEventArgs e)
+    {
+        sliderValue = Convert.ToInt32(e.Value);
+    }
+
+    private void ChangeClickedPlay()
+    {
+        isClickedPlay = !isClickedPlay;
+    }
+
+    private void ChangeClickedVolumeMut()
+    {
+        isClickedVolumeMut = !isClickedVolumeMut;
+
+        if (!isClickedVolumeMut)
+        {
+            sliderValueVolume = 50;
+        }
+        else
+        {
+            sliderValueVolume = 0;
+        }
+    }
+
+    private void SwitchToNextTrack()
+    {
+        CurrentTrackId = CurrentTrackId < Playlist.Count - 1 ? CurrentTrackId + 1 : 0;
+        _currentTrack = _nextTrack;
+        _previewTrack = CurrentTrackId - 1 >= 0 ? Playlist[CurrentTrackId - 1] : Playlist[Playlist.Count - 1];
+        _nextTrack = CurrentTrackId + 1 < Playlist.Count ? Playlist[CurrentTrackId + 1] : Playlist[0];
+        
+        StateHasChanged();
+    }
+    
+    private void SwitchToPreviewTrack()
+    {
+        CurrentTrackId = CurrentTrackId > 0 ? CurrentTrackId - 1 : Playlist.Count - 1;
+        _currentTrack = _previewTrack;
+        _previewTrack = _currentTrack.Id - 1 > 0 ? Playlist[_currentTrack.Id - 2] : Playlist[Playlist.Count - 1];
+        _nextTrack = _currentTrack.Id + 1 <= Playlist.Count ? Playlist[_currentTrack.Id] : Playlist[0];
+            
+        StateHasChanged();
+    }
+
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+
+        _currentTrack = Playlist[CurrentTrackId];
+        if (_currentTrack.Id < Playlist.Count)
+        {
+            _nextTrack = Playlist[CurrentTrackId + 1];
+            if (CurrentTrackId == 0)
+            {
+                _previewTrack = Playlist[Playlist.Count - 1];
+            }
+            else
+            {
+                _previewTrack = Playlist[CurrentTrackId - 1];
+            }
+        }
+        else
+        {
+            _nextTrack = Playlist[0];
+            _previewTrack = Playlist[CurrentTrackId - 1];
+            CurrentTrackId = 0;
+        }
+    }
+}

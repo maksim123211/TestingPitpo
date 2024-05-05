@@ -1,0 +1,49 @@
+﻿@using MauiApp1.Areas
+@page "/likeTrack"
+
+
+<header class="header main-title-listing">
+    <div><img class="icon-title" src="/images/playList.svg" alt="Список треков"> Список Треков</div>
+</header>
+<div class="main-block-listing">
+
+    <div class="track-block">
+        @if(!FavoriteTracks.Any())
+        {
+            <div class="not-like-track">У вас еще нет любимых треков</div>
+        }
+
+        @foreach (var song in FavoriteTracks)
+        {
+            <NavLink class="nav-link" href="@($"detailedTrack/{song.Title}/{song.Description}/{song.Image.Replace("/", "-")}")">
+                <div class="card-track-form">
+                    <div class="card-logo">
+                        <img src=@song.Image alt="Лого карточки трека">
+                    </div>
+                    <div class="text-card-track">
+                        <div class="title-track">
+                            @song.Title
+                        </div>
+                        <div class="description-track">
+                            @song.Description
+                        </div>
+                    </div>
+                </div>
+            </NavLink>
+        }
+    </div>
+</div>
+
+@code {
+    [Inject]
+    private Playlist Playlist { get; set; }
+
+    private IEnumerable<Track> FavoriteTracks;
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+
+        FavoriteTracks = Playlist.Where(x => x.IsFavorite).ToArray();
+    }
+}
